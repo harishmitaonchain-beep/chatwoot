@@ -95,7 +95,17 @@ yarn-debug.log*
 .claude/settings.local.json
 .cursor
 .codex/
-.claude/
+# Claude harness: share agents, skills, docs and wiki; keep credentials, customer cases and worktrees local
+.claude/*
+!.claude/agents/
+!.claude/skills/
+!.claude/docs-harness/
+!.claude/hooks/
+!.claude/workflows/
+!.claude/ai-wiki/
+!.claude/HARNESS.md
+!.claude/statusline.sh
+.claude/skills/solve-customer-issue/references/playbooks.md
 CLAUDE.local.md
 
 # Histoire deployment

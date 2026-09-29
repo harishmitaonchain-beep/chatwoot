@@ -1,0 +1,1096 @@
+{
+ "generated": "2026-08-17",
+ "source": "https://chatwoot.help/hc/user-guide/en",
+ "categories": [
+  {
+   "category": "Reports",
+   "articles": [
+    {
+     "title": "How to read Overview Reports (realtime)?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677693459-how-to-read-overview-reports-realtime",
+     "capabilities": [
+      "Reports: overview live metrics"
+     ]
+    },
+    {
+     "title": "How to read CSAT Reports?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677693868-how-to-read-csat-reports",
+     "capabilities": [
+      "CSAT report"
+     ]
+    },
+    {
+     "title": "How to read Conversations Reports?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1724140319-how-to-read-conversations-report",
+     "capabilities": [
+      "Reports: conversation timeseries & summary (read path)"
+     ]
+    },
+    {
+     "title": "How to read Bot Reports?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1724141456-how-to-read-the-bot-reports",
+     "capabilities": [
+      "Reports: bot reports"
+     ]
+    },
+    {
+     "title": "How to read SLA Reports?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1724145182-how-to-read-sla-reports",
+     "capabilities": [
+      "SLA report",
+      "SLA"
+     ]
+    },
+    {
+     "title": "Reading Conversations, Agents, Labels, Inbox, and Team Reports.",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677694691-reading-conversations-agents-labels-inbox-and-team-reports",
+     "capabilities": [
+      "Reports: agent/inbox/label/team/channel summaries",
+      "Reports: conversation timeseries & summary (read path)",
+      "Reports: CSV downloads"
+     ]
+    },
+    {
+     "title": "How to read the SLA Reports",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1713170964-how-to-read-the-sla-reports",
+     "capabilities": [
+      "SLA report",
+      "SLA"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Voice Channels",
+   "articles": [
+    {
+     "title": "Voice Calling in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1779863425-voice-calling-in-chatwoot",
+     "capabilities": [
+      "Voice: call lifecycle & status (shared Call model)",
+      "Voice: recording & transcription",
+      "Voice: call history & visibility"
+     ]
+    },
+    {
+     "title": "Connecting Twilio voice channel",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1779871614-connecting-twilio-voice-channel",
+     "capabilities": [
+      "Voice: Twilio channel setup & provisioning"
+     ]
+    },
+    {
+     "title": "Connecting WhatsApp voice channel",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1779871708-connecting-whats_app-voice-channel",
+     "capabilities": [
+      "Voice: WhatsApp calling (Meta Calling API)",
+      "Voice: WhatsApp call permissions"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Setup account",
+   "articles": [
+    {
+     "title": "Creating a Chatwoot Account",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677242820-create-your-chatwoot-account",
+     "capabilities": []
+    },
+    {
+     "title": "Customizing your personal profile",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677477447-customizing-your-personal-profile",
+     "capabilities": []
+    },
+    {
+     "title": "Setting up notifications",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1731478912-setting-up-notifications",
+     "capabilities": []
+    },
+    {
+     "title": "Updating your Account settings",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677480617-customizing-your-general-settings",
+     "capabilities": []
+    },
+    {
+     "title": "How to invite agents and manage your support team?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677482414-adding-agents",
+     "capabilities": [
+      "Agents & roles (admin/agent)",
+      "Custom roles"
+     ]
+    },
+    {
+     "title": "What is a channel? What is an inbox?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677492191-adding-inboxes",
+     "capabilities": []
+    },
+    {
+     "title": "A complete guide to teams in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677492970-adding-teams",
+     "capabilities": [
+      "Teams",
+      "Conversation assignment (agent/team)"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Other channels",
+   "articles": [
+    {
+     "title": "How to setup a Facebook channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677778588-how-to-setup-a-facebook-channel",
+     "capabilities": [
+      "Facebook & Instagram: Facebook Page connect & inbox setup"
+     ]
+    },
+    {
+     "title": "How to setup an Instagram channel (via Facebook login)?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677829420-how-to-setup-an-instagram-channel",
+     "capabilities": [
+      "Facebook & Instagram: Instagram via Facebook Page messaging",
+      "Facebook & Instagram: Facebook Page connect & inbox setup"
+     ]
+    },
+    {
+     "title": "How to setup a Twitter channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677831888-how-to-setup-a-twitter-channel",
+     "capabilities": [
+      "Twitter: tweets & DMs (legacy)"
+     ]
+    },
+    {
+     "title": "How to setup a WhatsApp channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677832735-how-to-setup-a-whats_app-channel",
+     "capabilities": [
+      "WhatsApp (channel umbrella)",
+      "WhatsApp: registration & webhook setup"
+     ]
+    },
+    {
+     "title": "How to setup an SMS channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677846958-how-to-setup-an-sms-channel",
+     "capabilities": [
+      "SMS: inbound & outbound messaging (Bandwidth)",
+      "Twilio: SMS & WhatsApp-via-Twilio messaging"
+     ]
+    },
+    {
+     "title": "How to setup an Email channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677843043-how-to-setup-an-email-channel",
+     "capabilities": [
+      "Email: channel setup (forwarding & IMAP/SMTP config)",
+      "Email: mailbox OAuth (Google/Microsoft)"
+     ]
+    },
+    {
+     "title": "How to setup a Telegram channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677838569-how-to-setup-a-telegram-channel",
+     "capabilities": [
+      "Telegram: bot & Business messaging"
+     ]
+    },
+    {
+     "title": "How to setup a Line channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677838977-how-to-setup-a-line-channel",
+     "capabilities": [
+      "Line: messaging"
+     ]
+    },
+    {
+     "title": "How to create an API channel inbox?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677839703-how-to-create-an-api-channel-inbox",
+     "capabilities": [
+      "API channel: custom-channel conversations & email continuity"
+     ]
+    },
+    {
+     "title": "How to Set Up a WhatsApp Channel with Twilio?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1742910590-how-to-set-up-a-whats_app-channel-with-twilio",
+     "capabilities": [
+      "Twilio: SMS & WhatsApp-via-Twilio messaging",
+      "WhatsApp (channel umbrella)"
+     ]
+    },
+    {
+     "title": "How to setup an Instagram channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1744361165-how-to-setup-an-instagram-channel-via-instagram-login",
+     "capabilities": [
+      "Facebook & Instagram: Instagram direct login connection",
+      "Facebook & Instagram: Instagram direct-login messaging"
+     ]
+    },
+    {
+     "title": "How to setup a WhatsApp channel (Embedded signup)",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1752129193-how-to-use-whatsapp-embedded-signup",
+     "capabilities": [
+      "WhatsApp: embedded signup",
+      "WhatsApp (channel umbrella)",
+      "WhatsApp: registration & webhook setup"
+     ]
+    },
+    {
+     "title": "How to setup a WhatsApp channel (Manual flow)?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1756799850-how-to-setup-a-whats_app-channel-manual-flow",
+     "capabilities": [
+      "WhatsApp: registration & webhook setup",
+      "WhatsApp (channel umbrella)"
+     ]
+    },
+    {
+     "title": "How to setup a TikTok channel?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1769595702-how-to-setup-a-tik_tok-channel",
+     "capabilities": [
+      "TikTok: OAuth & token lifecycle",
+      "TikTok: messaging, capabilities & read receipts"
+     ]
+    },
+    {
+     "title": "Synchronize WhatsApp templates using a Business Management token",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1785260890-whatsapp-business-token",
+     "capabilities": [
+      "WhatsApp: templates & business token"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Advanced features explained",
+   "articles": [
+    {
+     "title": "How to use Conversation Filters?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677688192-how-to-use-conversation-filters",
+     "capabilities": [
+      "Conversation filters & custom views"
+     ]
+    },
+    {
+     "title": "How to use pre-chat forms?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677688647-how-to-use-pre_chat-forms",
+     "capabilities": [
+      "Pre-chat forms"
+     ]
+    },
+    {
+     "title": "How to use Campaigns?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677738682-how-to-use-campaigns",
+     "capabilities": [
+      "Live-chat (ongoing) campaigns",
+      "One-off WhatsApp / SMS campaigns",
+      "Website live chat: campaigns on widget"
+     ]
+    },
+    {
+     "title": "How to create interactive messages?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677689344-how-to-use-interactive-messages",
+     "capabilities": [
+      "Website live chat: conversations & messaging",
+      "API channel: custom-channel conversations & email continuity"
+     ]
+    },
+    {
+     "title": "How to use Automation?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677689800-how-to-use-automation",
+     "capabilities": [
+      "Automation rules: rule engine (events, conditions, actions)"
+     ]
+    },
+    {
+     "title": "How to setup a WebSocket connection?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677691027-how-to-setup-a-web_socket-connection",
+     "capabilities": []
+    },
+    {
+     "title": "How to use template variables?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1679579699-template-variables",
+     "capabilities": [
+      "Canned responses"
+     ]
+    },
+    {
+     "title": "How to use Macros?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1679978392-how-to-use-macros",
+     "capabilities": [
+      "Macros"
+     ]
+    },
+    {
+     "title": "How to use Audit Logs?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1692251809-how-to-use-audit-logs",
+     "capabilities": [
+      "Audit logs"
+     ]
+    },
+    {
+     "title": "Wildcard URL support in website live-chat campaigns",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1712785075-wildcard-url-support-in-website-live_chat-campaigns",
+     "capabilities": [
+      "Live-chat (ongoing) campaigns",
+      "Website live chat: campaigns on widget"
+     ]
+    },
+    {
+     "title": "Service Level Agreements",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1713167310-service-level-agreemtns",
+     "capabilities": [
+      "SLA",
+      "SLA report"
+     ]
+    },
+    {
+     "title": "How does sorting work?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1740546374-how-does-sorting-work",
+     "capabilities": [
+      "Conversation filters & custom views"
+     ]
+    },
+    {
+     "title": "Setting per-agent conversation caps with Agent Capacity Policies",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1741998212-agent-capacity",
+     "capabilities": [
+      "Agent capacity limits",
+      "Auto-assignment: policy-driven bulk (V2)"
+     ]
+    },
+    {
+     "title": "What is Human Agent tag in Instagram/Messenger channel",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1745225158-what-is-human-agent-tag-in-instagram-messenger-channel",
+     "capabilities": [
+      "Facebook & Instagram: Human Agent tag (24h window extension)"
+     ]
+    },
+    {
+     "title": "Whatsapp templates",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1754940076-whatsapp-templates",
+     "capabilities": [
+      "WhatsApp: templates & business token",
+      "WhatsApp: outbound sending"
+     ]
+    },
+    {
+     "title": "Twilio content templates",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1756195741-twilio-content-templates",
+     "capabilities": [
+      "Twilio: content templates & CSAT provisioning",
+      "Twilio: SMS & WhatsApp-via-Twilio messaging"
+     ]
+    },
+    {
+     "title": "Setting up SAML Authentication",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1758635327-setting-up-saml",
+     "capabilities": []
+    },
+    {
+     "title": "Common WhatsApp issues and how to fix them",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1768986869-common-whats_app-issues-and-how-to-fix-them",
+     "capabilities": [
+      "WhatsApp (channel umbrella)",
+      "WhatsApp: health monitoring",
+      "WhatsApp: registration & webhook setup"
+     ]
+    },
+    {
+     "title": "Required Conversation Attributes",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1769161760-required-conversation-attributes",
+     "capabilities": [
+      "Custom attributes (contact & conversation)",
+      "Statuses, resolve & snooze"
+     ]
+    },
+    {
+     "title": "Advanced Assignment Policies",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1763978164-chatwoot-assignment-v2",
+     "capabilities": [
+      "Auto-assignment: policy-driven bulk (V2)",
+      "Auto-assignment: round-robin rotation queue",
+      "Agent capacity limits"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Help Center",
+   "articles": [
+    {
+     "title": "How to set up a Help Center?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677861202-how-to-setup-a-help-center",
+     "capabilities": [
+      "Help Center: portal management & branding",
+      "Help Center: category & folder taxonomy",
+      "Help Center: article authoring & publishing"
+     ]
+    },
+    {
+     "title": "How to setup an SSL certificate for your Help Center's custom domain?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677855950-generate-ssl-certificate",
+     "capabilities": [
+      "Help Center: custom domain & SSL"
+     ]
+    },
+    {
+     "title": "Embedding videos in Help Center",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1748419710-embedding-videos-in-help-center",
+     "capabilities": [
+      "Help Center: article authoring & publishing",
+      "Help Center: public portal rendering"
+     ]
+    },
+    {
+     "title": "Connect analytics to your help center",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1786121846-connect-analytics-to-your-help-center",
+     "capabilities": [
+      "Help Center: portal management & branding",
+      "Help Center: public portal rendering"
+     ]
+    },
+    {
+     "title": "Recommend categories and articles",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1786122758-recommend-categories-and-articles",
+     "capabilities": [
+      "Help Center: portal management & branding",
+      "Help Center: public portal rendering"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Apps and Integrations",
+   "articles": [
+    {
+     "title": "How to bring your Dialogflow chatbot to Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677743452-how-to-integrate-your-dialogflow-chatbot-with-chatwoot",
+     "capabilities": [
+      "Dialogflow",
+      "Agent bots"
+     ]
+    },
+    {
+     "title": "How to use webhooks?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677693021-how-to-use-webhooks",
+     "capabilities": [
+      "Webhooks (account)"
+     ]
+    },
+    {
+     "title": "How to answer conversations from Slack?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677774874-how-to-answer-conversations-from-slack",
+     "capabilities": [
+      "Slack"
+     ]
+    },
+    {
+     "title": "How to use Dashboard Apps?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677691702-how-to-use-dashboard-apps",
+     "capabilities": [
+      "Dashboard apps"
+     ]
+    },
+    {
+     "title": "How to enable video calls with Dyte integration?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1679928145-how-to-enable-video-calls-with-dyte-integration",
+     "capabilities": [
+      "Video calls (Dyte)"
+     ]
+    },
+    {
+     "title": "How to translate messages with Google Translate?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1679916448-how-to-translate-your-messages-with-google-translate",
+     "capabilities": [
+      "Google Translate"
+     ]
+    },
+    {
+     "title": "How to enhance conversations with OpenAI integration?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1683707349-openai",
+     "capabilities": [
+      "Captain: agent task assists (summarize/reply/rewrite/label)"
+     ]
+    },
+    {
+     "title": "How to track Issues and Features with Linear Integration?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1739949089-how-to-track-issues-and-features-with-linear-integration",
+     "capabilities": [
+      "Linear"
+     ]
+    },
+    {
+     "title": "How to enable video calls with Cloudflare RealtimeKit?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1781766180-how-to-enable-video-calls-with-cloudflare-realtime_kit",
+     "capabilities": [
+      "Video calls (Dyte)"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Captain",
+   "articles": [
+    {
+     "title": "Introduction to Captain",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738101283-captain-_-introduction",
+     "capabilities": [
+      "Captain: assistants (bot reply pipeline)",
+      "Copilot (agent sidebar)",
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "Creating an assistant with Captain",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738101547-creating-an-assistant-with-captain",
+     "capabilities": [
+      "Captain: assistants (bot reply pipeline)",
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "Creating a document in Captain",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738104411-creating-a-document-in-captain",
+     "capabilities": [
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "Creating an FAQ with Captain",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738101609-creating-an-faq-with-captain",
+     "capabilities": [
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "How to use Captain Memories?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738101691-how-to-use-captain-memories",
+     "capabilities": [
+      "Memories (contact facts)"
+     ]
+    },
+    {
+     "title": "How to use Captain Copilot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1738110272-how-to-use-captain-copilot",
+     "capabilities": [
+      "Copilot (agent sidebar)"
+     ]
+    },
+    {
+     "title": "How to enable Captain on self-hosted installations?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1755284287-how-to-enable-captain-on-self_hosted-installations",
+     "capabilities": [
+      "Captain: assistants (bot reply pipeline)"
+     ]
+    },
+    {
+     "title": "How AI Credits work in Captain?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1765223602-how-ai-credits-work-in-captain",
+     "capabilities": [
+      "Captain: AI credits & usage limits"
+     ]
+    },
+    {
+     "title": "Updating robots.txt to Allow Chatwoot Assistant to Crawl Your Website",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1765224466-updating-robots-txt-to-allow-chatwoot-assistant-to-crawl-your-website",
+     "capabilities": [
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "How to Set Up Custom Tools for Captain?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1775045339-v2-_-how-to-set-up-custom-tools-for-captain",
+     "capabilities": [
+      "Captain: custom tools"
+     ]
+    },
+    {
+     "title": "Control who Captain replies to and when",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1786119055-control-who-captain-replies-to-and-when-audience-schedule",
+     "capabilities": [
+      "Captain: reply control & auto-resolution"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Chatwoot 101",
+   "articles": [
+    {
+     "title": "Chatwoot Glossary",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677141565-chatwoot-glossary",
+     "capabilities": []
+    },
+    {
+     "title": "Getting Started with Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1673260810-getting-started-chatwoot-101",
+     "capabilities": []
+    },
+    {
+     "title": "Lesson 1: Your first Chatwoot conversation",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677229173-lesson-1-your-first-chatwoot-conversation",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API",
+      "Website live chat: conversations & messaging",
+      "Statuses, resolve & snooze"
+     ]
+    },
+    {
+     "title": "Lesson 2: Dashboard Basics",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677231493-lesson-2-dashboard-basics",
+     "capabilities": [
+      "Conversation filters & custom views",
+      "Statuses, resolve & snooze",
+      "Labels"
+     ]
+    },
+    {
+     "title": "Lesson 3 (a): Mastering core features",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677235281-lesson-3-a-mastering-core-features",
+     "capabilities": [
+      "Private notes & @mentions",
+      "Canned responses",
+      "Macros"
+     ]
+    },
+    {
+     "title": "Lesson 3 (b): Working with Customer Context",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677237449-lesson-3-b-mastering-core-features",
+     "capabilities": [
+      "Contact management",
+      "Custom attributes (contact & conversation)",
+      "Conversations: bulk actions"
+     ]
+    },
+    {
+     "title": "Lesson 4: Automation and Routing",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677238266-lesson-4-complete-your-customer-engagement-suite",
+     "capabilities": [
+      "Automation rules: rule engine (events, conditions, actions)",
+      "SLA",
+      "Business hours"
+     ]
+    },
+    {
+     "title": "Lesson 5: AI Actions",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1777328078-lesson-5-ai-actions",
+     "capabilities": [
+      "Captain: assistants (bot reply pipeline)",
+      "Copilot (agent sidebar)",
+      "Captain: documents & knowledge sync"
+     ]
+    },
+    {
+     "title": "Lesson 6: Reports and Metrics",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1777328138-lesson-6-reports-and-metrics",
+     "capabilities": [
+      "Reports: overview live metrics",
+      "Reports: agent/inbox/label/team/channel summaries",
+      "CSAT report"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Best practices",
+   "articles": [
+    {
+     "title": "Assigning conversations in a round-robin fashion",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677696868-assigning-conversations-in-a-round_robin-fashion",
+     "capabilities": [
+      "Auto-assignment: round-robin rotation queue",
+      "Auto-assignment: legacy per-conversation (V1)",
+      "Conversation assignment (agent/team)"
+     ]
+    },
+    {
+     "title": "Working with command bar",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677697180-working-with-command-bar",
+     "capabilities": []
+    },
+    {
+     "title": "Working with keyboard shortcuts",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677698168-working-with-keyboard-shortcuts",
+     "capabilities": []
+    },
+    {
+     "title": "Group your contacts into custom segments",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677748953-group-your-contacts-using-filters-and-save-them-as-custom-segments",
+     "capabilities": [
+      "Segments (saved contact filters)",
+      "Contact management"
+     ]
+    },
+    {
+     "title": "Group chats with filters, save as folders",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677698771-group-chats-with-filters-save-as-folders",
+     "capabilities": [
+      "Conversation filters & custom views"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Other topics",
+   "articles": [
+    {
+     "title": "Which cookies are used by Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677778232-which-cookies-are-used-by-chatwoot",
+     "capabilities": [
+      "Website live chat: visitor session & auth token"
+     ]
+    },
+    {
+     "title": "Mobile app for Android",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677777866-mobile-app-for-android",
+     "capabilities": []
+    },
+    {
+     "title": "Mobile app for iOS",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677776959-mobile-app-for-i_os",
+     "capabilities": []
+    },
+    {
+     "title": "Enterprise Edition",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677776492-enterprise-edition",
+     "capabilities": []
+    },
+    {
+     "title": "Languages supported in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677695546-languages-supported-in-chatwoot",
+     "capabilities": []
+    },
+    {
+     "title": "What we don't cover in Chatwoot Free Trial",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1699010044-what-we-don-t-cover-in",
+     "capabilities": []
+    },
+    {
+     "title": "How to enable push notifications in your browser",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1731484809-how-to-enable-push-notifications-in-your-browser",
+     "capabilities": []
+    },
+    {
+     "title": "How to hard-reload on most browsers",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1742879613-how-to-hard_reload-on-most-browsers",
+     "capabilities": []
+    },
+    {
+     "title": "How to Use Your Coupon Code on Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1744047690-how-to-apply-your-coupon-code-inside-chatwoot",
+     "capabilities": []
+    },
+    {
+     "title": "Inconsistencies for WhatsApp Numbers in Brazil and Argentina",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1758697086-inconsistencies-for-whats_app-numbers-in-brazil-mexico-and-argentina",
+     "capabilities": [
+      "WhatsApp: phone normalization",
+      "WhatsApp (channel umbrella)"
+     ]
+    },
+    {
+     "title": "Troubleshooting: Why am I not receiving notifications?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1772103052-troubleshooting-why-am-i-not-receiving-notifications",
+     "capabilities": []
+    },
+    {
+     "title": "Migrate a WhatsApp Embedded Signup inbox to manual setup",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1783938358-migrate-a-whats_app-embedded-signup-inbox-to-manual-setup",
+     "capabilities": [
+      "WhatsApp: embedded signup",
+      "WhatsApp: registration & webhook setup",
+      "WhatsApp: reauthorization & credential transfer"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Website live chat",
+   "articles": [
+    {
+     "title": "Website live chat settings explained",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677580558-website-live-chat-settings-explained",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API",
+      "Website live chat: dark mode & appearance",
+      "Pre-chat forms"
+     ]
+    },
+    {
+     "title": "How to install live chat using Google Tag Manager?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677588225-how-to-install-live-chat-using-google-tag-manager",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live chat on a Docusaurus website?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677669621-how-to-install-live-chat-on-a-docusaurus-website",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live chat on a Webflow website?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677671793-how-to-install-live-chat-on-a-webflow-website",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live chat on a Gatsby website?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677671443-how-to-install-live-chat-on-a-gatsby-website",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live chat on a WordPress website?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677669989-how-to-install-live-chat-on-a-word_press-website",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live-chat on a React Native app?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677672686-how-to-install-live_chat-on-a-react-native-app",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live-chat on a Next.js app?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677676986-how-to-install-live_chat-on-a-next-js-app",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to install live-chat on a Vue.js app?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677677232-how-to-install-live_chat-on-a-vue-js-app",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to send additional user information to Chatwoot using SDK?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677587234-how-to-send-additional-user-information-to-chatwoot-using-sdk",
+     "capabilities": [
+      "Website live chat: SDK embed & public JS API",
+      "Contacts: identity & dedupe (widget identify)",
+      "Custom attributes (contact & conversation)"
+     ]
+    },
+    {
+     "title": "How to continue conversations through email?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677587761-how-to-continue-conversations-through-email",
+     "capabilities": [
+      "Website live chat: continuity via email",
+      "Email: conversation continuity (widget/API → email)"
+     ]
+    },
+    {
+     "title": "How to enable identity validation in Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677587479-how-to-enable-identity-validation-in-chatwoot",
+     "capabilities": [
+      "Identity validation (HMAC)",
+      "Contacts: identity & dedupe (widget identify)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to enable dark mode on live-chat widget?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677587636-how-to-enable-dark-mode-on-live_chat-widget",
+     "capabilities": [
+      "Website live chat: dark mode & appearance",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "Understanding Contact Identity and Identity Validation in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1782283175-understanding-contact-identity-and-identity-validation-in-chatwoot",
+     "capabilities": [
+      "Contacts: identity & dedupe (widget identify)",
+      "Identity validation (HMAC)",
+      "Website live chat: visitor session & auth token"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Migrations",
+   "articles": [
+    {
+     "title": "How to migrate from Intercom to Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1696162098-how-to-migrate-from-intercom-to-chatwoot",
+     "capabilities": [
+      "Data import (contact CSV import)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to migrate from Front to Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1696163019-how-to-migrate-from-front-to-chatwoot",
+     "capabilities": [
+      "Data import (contact CSV import)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to migrate from Freshdesk to Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1696159781-how-to-migrate-from-freshdesk-to-chatwoot",
+     "capabilities": [
+      "Data import (contact CSV import)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to migrate from Zendesk to Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1696162432-how-to-migrate-from-zendesk-to-chatwoot",
+     "capabilities": [
+      "Data import (contact CSV import)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "How To",
+   "articles": [
+    {
+     "title": "Purchasing a Paid Self-Hosted Chatwoot License: A Step-by-Step Guide",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1750735898-purchasing-a-paid-self_hosted-chatwoot-license-a-step_by_step-guide",
+     "capabilities": []
+    },
+    {
+     "title": "How to Find Your Personal Access Token in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1757445004-how-to-find-your-personal-access-token-in-chatwoot",
+     "capabilities": []
+    },
+    {
+     "title": "How to Embed Your Help Center Articles in the Live Chat Widget",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1757446321-how-to-embed-your-help-center-articles-in-the-live-chat-widget",
+     "capabilities": [
+      "Help Center: widget/iframe embedding (plain layout)",
+      "Website live chat: SDK embed & public JS API"
+     ]
+    },
+    {
+     "title": "How to Change Your Email Address in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1757447973-how-to-change-your-email-address-in-chatwoot",
+     "capabilities": []
+    },
+    {
+     "title": "How to Remove the Free Usage Limit Exceeded Message in Chatwoot",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1757451305-how-to-remove-the-free-usage-limit-exceeded-message-in-chatwoot",
+     "capabilities": []
+    },
+    {
+     "title": "How to Segment Contacts in Chatwoot?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1775764014-how-to",
+     "capabilities": [
+      "Segments (saved contact filters)",
+      "Contact management"
+     ]
+    }
+   ]
+  },
+  {
+   "category": "Features explained",
+   "articles": [
+    {
+     "title": "How to add labels?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677496066-how-to-add-labels",
+     "capabilities": [
+      "Labels"
+     ]
+    },
+    {
+     "title": "How to use Agent bots?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677497472-how-to-use-agent-bots",
+     "capabilities": [
+      "Agent bots"
+     ]
+    },
+    {
+     "title": "Understanding Contacts",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677498364-understanding-contacts",
+     "capabilities": [
+      "Contact management",
+      "Data import (contact CSV import)"
+     ]
+    },
+    {
+     "title": "How to create saved reply templates with Canned Responses?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677501325-how-to-create-saved-reply-templates-with-canned-responses",
+     "capabilities": [
+      "Canned responses"
+     ]
+    },
+    {
+     "title": "How to create and use custom attributes?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677502327-how-to-create-and-use-custom-attributes",
+     "capabilities": [
+      "Custom attributes (contact & conversation)"
+     ]
+    },
+    {
+     "title": "How to enable CSAT surveys?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1677503828-how-to-enable-csat-surveys",
+     "capabilities": [
+      "CSAT: inbox enablement & survey rules",
+      "CSAT: survey trigger on resolution",
+      "CSAT report"
+     ]
+    },
+    {
+     "title": "How to assign a priority",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1682679737-how-to-assign-a-priority",
+     "capabilities": [
+      "Priority"
+     ]
+    },
+    {
+     "title": "How to use omnichannel message signature?",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1695209306-how-to-use-the-omnichannel-message-signature",
+     "capabilities": []
+    },
+    {
+     "title": "Preventing Agent Collision",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1732243644-preventing-agent-collision",
+     "capabilities": [
+      "Conversation assignment (agent/team)",
+      "Conversations: typing indicators"
+     ]
+    },
+    {
+     "title": "Manage team access control with flexible role-based permissions",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1741923706-manage-team-access-control-with-flexible-role_based-permissions",
+     "capabilities": [
+      "Custom roles",
+      "Agents & roles (admin/agent)"
+     ]
+    },
+    {
+     "title": "WhatsApp CSAT Surveys using Templates",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1768303449-whats_app-csat-surveys-in-chatwoot",
+     "capabilities": [
+      "CSAT: WhatsApp & Twilio template management",
+      "WhatsApp: templates & business token",
+      "Twilio: content templates & CSAT provisioning"
+     ]
+    },
+    {
+     "title": "Review Notes for CSAT",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1768536939-review-notes-for-csat",
+     "capabilities": [
+      "CSAT: review notes"
+     ]
+    },
+    {
+     "title": "Business Hours and Auto-Responder",
+     "url": "https://chatwoot.help/hc/user-guide/articles/1777421876-business-hours-and-auto_responder",
+     "capabilities": [
+      "Business hours",
+      "Auto-responder (greeting / out-of-office)"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,1588 @@
+[
+ {
+  "area": "SMS / Telegram / Line / TikTok / API / Twitter channels",
+  "rows": [
+   {
+    "capability": "SMS: inbound & outbound messaging (Bandwidth)",
+    "entry_points": [
+     "app/services/sms/incoming_message_service.rb",
+     "app/services/sms/send_on_sms_service.rb",
+     "app/services/sms/delivery_status_service.rb",
+     "app/models/channel/sms.rb",
+     "app/controllers/webhooks/sms_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "Generic SMS API channel (Bandwidth-style); delivery-status webhook maps message-delivered/failed onto Message#status."
+   },
+   {
+    "capability": "Twilio: SMS & WhatsApp-via-Twilio messaging",
+    "entry_points": [
+     "app/services/twilio/incoming_message_service.rb",
+     "app/services/twilio/send_on_twilio_service.rb",
+     "app/services/twilio/whatsapp_identifier_helper.rb",
+     "app/services/twilio/delivery_status_service.rb",
+     "app/models/channel/twilio_sms.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "One Channel::TwilioSms serves both mediums (sms/whatsapp); webhooks land on app/controllers/twilio/ callback + delivery_status controllers, and whatsapp_identifier_helper owns the BSUID-vs-phone identity problem."
+   },
+   {
+    "capability": "Twilio: content templates & CSAT provisioning",
+    "entry_points": [
+     "app/services/twilio/template_sync_service.rb",
+     "app/services/twilio/template_processor_service.rb",
+     "app/services/twilio/csat_template_service.rb",
+     "app/services/twilio/csat_template_api_client.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels"
+    ],
+    "note": "Syncs approved Content Templates onto channel.content_templates and provisions the CSAT survey call-to-action template."
+   },
+   {
+    "capability": "SMS: one-off campaigns",
+    "entry_points": [
+     "app/services/sms/oneoff_sms_campaign_service.rb",
+     "app/services/twilio/oneoff_sms_campaign_service.rb"
+    ],
+    "flags": [
+     "campaigns"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "other-channels"
+    ],
+    "note": "Audience-label blast sends with per-contact rescue; invoked from the campaigns feature's scheduling side."
+   },
+   {
+    "capability": "Telegram: bot & Business messaging",
+    "entry_points": [
+     "app/services/telegram/incoming_message_service.rb",
+     "app/services/telegram/send_on_telegram_service.rb",
+     "app/services/telegram/send_attachments_service.rb",
+     "app/services/telegram/update_message_service.rb",
+     "app/models/channel/telegram.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "Handles Telegram Business payloads (agent-sent echoes stored as outgoing) and edited_message sync by source_id."
+   },
+   {
+    "capability": "Line: messaging",
+    "entry_points": [
+     "app/services/line/incoming_message_service.rb",
+     "app/services/line/send_on_line_service.rb",
+     "app/models/channel/line.rb",
+     "app/controllers/webhooks/line_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "Stickers rendered as markdown images off LINE's CDN; outbound deliberately uses permanent file_url over 5-min signed download_url."
+   },
+   {
+    "capability": "TikTok: OAuth & token lifecycle",
+    "entry_points": [
+     "app/services/tiktok/auth_client.rb",
+     "app/services/tiktok/token_service.rb",
+     "app/services/tiktok/client.rb",
+     "app/models/channel/tiktok.rb"
+    ],
+    "flags": [
+     "channel_tiktok"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "other-channels"
+    ],
+    "note": "Short-lived tokens refreshed lazily under a Redis lock via Tiktok::TokenService; both-expired triggers prompt_reauthorization!."
+   },
+   {
+    "capability": "TikTok: messaging, capabilities & read receipts",
+    "entry_points": [
+     "app/services/tiktok/message_service.rb",
+     "app/services/tiktok/send_on_tiktok_service.rb",
+     "app/services/tiktok/read_status_service.rb",
+     "app/controllers/webhooks/tiktok_controller.rb"
+    ],
+    "flags": [
+     "channel_tiktok"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "image_send_capable? probed once and cached on the conversation; text and attachment are mutually exclusive per send."
+   },
+   {
+    "capability": "API channel: custom-channel conversations & email continuity",
+    "entry_points": [
+     "app/models/channel/api.rb",
+     "app/services/messages/send_email_notification_service.rb"
+    ],
+    "flags": [
+     "email_continuity_on_api_channel"
+    ],
+    "tier": null,
+    "pages": [
+     "other-channels"
+    ],
+    "note": "Messages arrive via the REST API and leave via account webhooks; the flag gates only the email-continuity fallback notification."
+   },
+   {
+    "capability": "Twitter: tweets & DMs (legacy)",
+    "entry_points": [
+     "app/services/twitter/tweet_parser_service.rb",
+     "app/services/twitter/direct_message_parser_service.rb",
+     "app/services/twitter/send_on_twitter_service.rb",
+     "app/services/twitter/webhook_subscribe_service.rb",
+     "app/models/channel/twitter_profile.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "other-channels",
+     "webhook-routing"
+    ],
+    "note": "Legacy Account Activity API (webhook enters via Api::V1::WebhooksController#twitter_events, not app/controllers/webhooks/); treat as lower-confidence given X API changes."
+   }
+  ],
+  "kept": []
+ },
+ {
+  "area": "Facebook & Instagram",
+  "rows": [
+   {
+    "capability": "Facebook & Instagram: Facebook Page connect & inbox setup",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/callbacks_controller.rb",
+     "app/models/channel/facebook_page.rb",
+     "config/initializers/facebook_messenger.rb"
+    ],
+    "flags": [
+     "channel_facebook"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram",
+     "webhook-routing"
+    ],
+    "note": "OAuth Page picker + inbox creation (register_facebook_page); subscribe/unsubscribe swallow errors silently."
+   },
+   {
+    "capability": "Facebook & Instagram: Messenger inbound pipeline",
+    "entry_points": [
+     "config/initializers/facebook_messenger.rb",
+     "app/jobs/webhooks/facebook_events_job.rb",
+     "lib/integrations/facebook/message_parser.rb",
+     "lib/integrations/facebook/message_creator.rb",
+     "app/builders/messages/facebook/message_builder.rb"
+    ],
+    "flags": [
+     "channel_facebook"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram",
+     "webhook-routing",
+     "lib-integrations"
+    ],
+    "note": "Inbound is the facebook-messenger gem's server mounted at /bot, not a Rails webhook controller."
+   },
+   {
+    "capability": "Facebook & Instagram: Messenger outbound send",
+    "entry_points": [
+     "app/services/facebook/send_on_facebook_service.rb"
+    ],
+    "flags": [
+     "channel_facebook"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram"
+    ],
+    "note": "Token invalidation is string-matched (not numeric code) before triggering authorization_error!."
+   },
+   {
+    "capability": "Facebook & Instagram: Instagram webhook ingress & event dispatch",
+    "entry_points": [
+     "app/controllers/webhooks/instagram_controller.rb",
+     "app/jobs/webhooks/instagram_events_job.rb",
+     "app/services/instagram/base_message_text.rb",
+     "app/services/instagram/webhooks_base_service.rb",
+     "app/services/instagram/test_event_service.rb"
+    ],
+    "flags": [
+     "channel_instagram"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram",
+     "webhook-routing"
+    ],
+    "note": "find_channel prefers Channel::Instagram, falls back to Channel::FacebookPage, then dispatches to the matching connection-mode services."
+   },
+   {
+    "capability": "Facebook & Instagram: Instagram direct login connection",
+    "entry_points": [
+     "app/controllers/instagram/callbacks_controller.rb",
+     "app/controllers/api/v1/accounts/instagram/authorizations_controller.rb",
+     "app/services/instagram/refresh_oauth_token_service.rb",
+     "app/models/channel/instagram.rb"
+    ],
+    "flags": [
+     "channel_instagram"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram"
+    ],
+    "note": "Standalone Instagram Login OAuth with long-lived token refresh; access_token can return nil when expired."
+   },
+   {
+    "capability": "Facebook & Instagram: Instagram direct-login messaging",
+    "entry_points": [
+     "app/services/instagram/message_text.rb",
+     "app/services/instagram/send_on_instagram_service.rb",
+     "app/services/instagram/base_send_service.rb",
+     "app/builders/messages/instagram/message_builder.rb"
+    ],
+    "flags": [
+     "channel_instagram"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram"
+    ],
+    "note": "Channel::Instagram path via graph.instagram.com with the channel's own token; codes 9010/100 become synthetic Unknown contacts."
+   },
+   {
+    "capability": "Facebook & Instagram: Instagram via Facebook Page messaging",
+    "entry_points": [
+     "app/services/instagram/messenger/message_text.rb",
+     "app/services/instagram/messenger/send_on_instagram_service.rb",
+     "app/builders/messages/instagram/messenger/message_builder.rb"
+    ],
+    "flags": [
+     "channel_instagram"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram"
+    ],
+    "note": "Page-linked mode via Koala/graph.facebook.com with page_access_token + appsecret_proof — do not conflate with direct login."
+   },
+   {
+    "capability": "Facebook & Instagram: delivery & read receipts",
+    "entry_points": [
+     "lib/integrations/facebook/delivery_status.rb",
+     "app/jobs/webhooks/facebook_delivery_job.rb",
+     "app/services/instagram/read_status_service.rb"
+    ],
+    "flags": [
+     "channel_facebook",
+     "channel_instagram"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "facebook-instagram",
+     "lib-integrations"
+    ],
+    "note": "Maps Meta delivery/read watermarks to Conversations::UpdateMessageStatusJob; IG payload shape is shared across both connection modes."
+   },
+   {
+    "capability": "Facebook & Instagram: Human Agent tag (24h window extension)",
+    "entry_points": [
+     "app/services/facebook/send_on_facebook_service.rb",
+     "app/services/instagram/base_send_service.rb",
+     "app/controllers/super_admin/app_configs_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "facebook-instagram"
+    ],
+    "note": "Gated by GlobalConfig keys ENABLE_MESSENGER_CHANNEL_HUMAN_AGENT / ENABLE_INSTAGRAM_CHANNEL_HUMAN_AGENT (Super Admin app configs), not features.yml."
+   }
+  ],
+  "kept": []
+ },
+ {
+  "area": "Help Center",
+  "rows": [
+   {
+    "capability": "Help Center: portal management & branding",
+    "entry_points": [
+     "app/models/portal.rb",
+     "app/models/concerns/portal_config_schema.rb",
+     "app/controllers/api/v1/accounts/portals_controller.rb"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "help-center-models"
+    ],
+    "note": "Portal CRUD: slug, locales, layout (classic/documentation), color/logo branding, analytics snippets, and per-locale popular-content recommendations, all schema-validated via PortalConfigSchema."
+   },
+   {
+    "capability": "Help Center: category & folder taxonomy",
+    "entry_points": [
+     "app/models/category.rb",
+     "app/models/folder.rb",
+     "app/models/related_category.rb",
+     "app/controllers/api/v1/accounts/categories_controller.rb"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "help-center-models"
+    ],
+    "note": "Locale-scoped categories with three distinct self-referential links: parent/sub hierarchy, cross-locale associated categories, and RelatedCategory join for related topics."
+   },
+   {
+    "capability": "Help Center: article authoring & publishing",
+    "entry_points": [
+     "app/models/article.rb",
+     "app/controllers/api/v1/accounts/articles_controller.rb",
+     "app/controllers/api/v1/accounts/articles/bulk_actions_controller.rb"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "help-center-models"
+    ],
+    "note": "Draft/published/archived workflow with per-locale draft publishing, hand-rolled position rebalancing (not acts_as_list), and cross-locale linked translations via associated_article_id."
+   },
+   {
+    "capability": "Help Center: public portal rendering",
+    "entry_points": [
+     "app/controllers/public/api/v1/portals_controller.rb",
+     "app/controllers/public/api/v1/portals/base_controller.rb",
+     "app/controllers/public/api/v1/portals/articles_controller.rb",
+     "app/controllers/public/api/v1/portals/categories_controller.rb",
+     "app/javascript/portal"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "portal-survey-superadmin",
+     "help-center-models"
+    ],
+    "note": "Server-rendered Turbo/ERB site with small Vue islands (search, TOC, theme toggle) reading window.portalConfig; on Cloud the flag gate returns 402 not_active when help_center is off."
+   },
+   {
+    "capability": "Help Center: article search (full-text & semantic)",
+    "entry_points": [
+     "app/controllers/public/api/v1/portals/search_controller.rb",
+     "app/services/search_service.rb",
+     "enterprise/app/models/enterprise/concerns/article.rb",
+     "enterprise/app/jobs/portal/article_indexing_job.rb"
+    ],
+    "flags": [
+     "help_center",
+     "help_center_embedding_search"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "help-center-models",
+     "portal-survey-superadmin"
+    ],
+    "note": "OSS path is pg_search text_search (public portal search + agent-side SearchService); Enterprise pgvector vector_search is gated by help_center_embedding_search, a manual-only flag granted by no plan tier."
+   },
+   {
+    "capability": "Help Center: custom domain & SSL",
+    "entry_points": [
+     "enterprise/app/models/enterprise/concerns/portal.rb",
+     "enterprise/app/jobs/enterprise/cloudflare_verification_job.rb",
+     "enterprise/app/services/cloudflare"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "help-center-models"
+    ],
+    "note": "Portal#custom_domain changes enqueue Cloudflare custom-hostname verification on Chatwoot Cloud only; ssl_settings jsonb lives on Portal."
+   },
+   {
+    "capability": "Help Center: widget/iframe embedding (plain layout)",
+    "entry_points": [
+     "app/controllers/public/api/v1/portals/base_controller.rb",
+     "app/javascript/portal/portalHelpers.js"
+    ],
+    "flags": [
+     "help_center"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "portal-survey-superadmin"
+    ],
+    "note": "show_plain_layout=true switches rendering to the :plain variant (chrome-less layout, X-Frame-Options removed) for embedding articles inside the web widget or an iframe."
+   }
+  ],
+  "kept": []
+ },
+ {
+  "area": "CSAT",
+  "rows": [
+   {
+    "capability": "CSAT: inbox enablement & survey rules",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/inboxes_controller.rb",
+     "app/models/inbox.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "portal-survey-superadmin"
+    ],
+    "note": "Per-inbox csat_survey_enabled + csat_config jsonb (display_type emoji/star, message, button_text, label-based survey_rules, template) permitted/normalized in InboxesController#format_csat_config."
+   },
+   {
+    "capability": "CSAT: survey trigger on resolution",
+    "entry_points": [
+     "app/listeners/csat_survey_listener.rb",
+     "app/services/csat_survey_service.rb",
+     "app/services/message_templates/template/csat_survey.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "events-listeners"
+    ],
+    "note": "conversation_status_changed → eligibility checks (enabled, not tweet, not already sent, label survey_rules, messaging window) → input_csat message, WhatsApp/Twilio template fallback, or a not-sent activity message."
+   },
+   {
+    "capability": "CSAT: WhatsApp & Twilio template management",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/inbox_csat_templates_controller.rb",
+     "app/services/csat_template_management_service.rb",
+     "app/services/whatsapp/csat_template_service.rb",
+     "app/services/twilio/csat_template_service.rb",
+     "app/services/csat_template_name_service.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "whatsapp"
+    ],
+    "note": "Creates/status-checks the auto-generated versioned CSAT template on the WABA (or Twilio Content API) so resolved conversations outside the 24h window still get a survey."
+   },
+   {
+    "capability": "CSAT: template utility analysis (Captain)",
+    "entry_points": [
+     "app/services/csat_template_utility_analysis_service.rb",
+     "app/services/csat_template_utility_rubric.rb",
+     "app/controllers/api/v1/accounts/inbox_csat_templates_controller.rb"
+    ],
+    "flags": [
+     "captain_integration"
+    ],
+    "tier": null,
+    "pages": [
+     "whatsapp"
+    ],
+    "note": "AI pre-check (analyze action, 403 without captain_integration) scoring a draft CSAT template against a rubric before submitting it to Meta."
+   },
+   {
+    "capability": "CSAT: public survey response page",
+    "entry_points": [
+     "app/controllers/survey/responses_controller.rb",
+     "app/controllers/public/api/v1/csat_survey_controller.rb",
+     "app/javascript/survey/views/Response.vue"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "portal-survey-superadmin"
+    ],
+    "note": "Standalone Vue SPA keyed by conversation UUID (not a survey id); GET/PATCH /public/api/v1/csat_survey/:uuid with rating+feedback, edits 422-locked after 14 days."
+   },
+   {
+    "capability": "CSAT: response capture & storage",
+    "entry_points": [
+     "app/listeners/csat_survey_listener.rb",
+     "app/builders/csat_surveys/response_builder.rb",
+     "app/models/csat_survey_response.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "events-listeners",
+     "portal-survey-superadmin"
+    ],
+    "note": "message_updated on the input_csat message upserts CsatSurveyResponse (unique per message, snapshots assigned agent) — the rows CSAT reports aggregate."
+   },
+   {
+    "capability": "CSAT: review notes",
+    "entry_points": [
+     "enterprise/app/controllers/enterprise/api/v1/accounts/csat_survey_responses_controller.rb",
+     "enterprise/app/policies/enterprise/csat_survey_response_policy.rb",
+     "app/models/csat_survey_response.rb"
+    ],
+    "flags": [
+     "csat_review_notes"
+    ],
+    "tier": "Business+",
+    "pages": [
+     "portal-survey-superadmin"
+    ],
+    "note": "Enterprise-only update of csat_review_notes on a response with review_notes_updated_by/at audit fields."
+   }
+  ],
+  "kept": [
+   "CSAT report"
+  ]
+ },
+ {
+  "area": "Reports",
+  "rows": [
+   {
+    "capability": "Reports: overview live metrics",
+    "entry_points": [
+     "app/controllers/api/v2/accounts/live_reports_controller.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "Realtime Overview page (LiveReports.vue): open/unattended conversation metrics and agent/team/inbox-grouped metrics computed live from conversations, not reporting_events."
+   },
+   {
+    "capability": "Reports: conversation timeseries & summary (read path)",
+    "entry_points": [
+     "app/controllers/api/v2/accounts/reports_controller.rb",
+     "app/builders/v2/reports/timeseries/base_timeseries_builder.rb",
+     "app/services/reports/raw_data_source.rb",
+     "app/services/reports/report_metric_registry.rb",
+     "app/services/reports/data_source.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "Core index/summary metrics; Reports::DataSource.for still always returns RawDataSource — the rollup-backed read path is not wired."
+   },
+   {
+    "capability": "Reports: agent/inbox/label/team/channel summaries",
+    "entry_points": [
+     "app/controllers/api/v2/accounts/summary_reports_controller.rb",
+     "app/builders/v2/reports/base_summary_builder.rb",
+     "app/builders/v2/reports/agent_summary_builder.rb",
+     "app/builders/v2/report_builder.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "Two generations coexist: revised index-table summaries via V2::Reports::*SummaryBuilder, while legacy V2::ReportBuilder still powers the old entity pages and the conversations action."
+   },
+   {
+    "capability": "Reports: drilldown",
+    "entry_points": [
+     "app/builders/v2/reports/drilldown_builder.rb",
+     "app/services/reports/drilldown_timestamp_validator.rb",
+     "app/builders/v2/reports/drilldown_record_serializer.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "Click a chart bucket to see underlying conversations/messages/events; admin-only at both controller and UI level."
+   },
+   {
+    "capability": "Reports: bot reports",
+    "entry_points": [
+     "app/builders/v2/reports/bot_metrics_builder.rb",
+     "app/controllers/api/v2/accounts/reports_controller.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "bot_summary/bot_metrics actions over bot_resolutions_count/bot_handoffs_count; handoff uniqueness enforced by DISTINCT conversation_id, not the DB."
+   },
+   {
+    "capability": "Reports: CSV downloads",
+    "entry_points": [
+     "app/controllers/api/v2/accounts/reports_controller.rb",
+     "app/helpers/api/v2/accounts/reports_helper.rb",
+     "app/helpers/report_helper.rb"
+    ],
+    "flags": [
+     "reports"
+    ],
+    "tier": null,
+    "pages": [
+     "reports",
+     "feature-uis"
+    ],
+    "note": "Server-generated CSV exports (agents/inboxes/labels/teams/conversations_summary/conversation_traffic); CSAT and SLA have their own download actions on their controllers."
+   },
+   {
+    "capability": "Reports: metric event capture & rollups (write path)",
+    "entry_points": [
+     "app/listeners/reporting_event_listener.rb",
+     "app/services/reporting_events/rollup_service.rb",
+     "app/services/reporting_events/backfill_service.rb",
+     "app/services/reporting_events/event_metric_registry.rb"
+    ],
+    "flags": [
+     "report_rollup"
+    ],
+    "tier": null,
+    "pages": [
+     "reports"
+    ],
+    "note": "ReportingEvent + ReportingEventsRollup producers; rollup writes run unconditionally (report_rollup only ever gates the not-yet-wired read side) and BackfillService has no scheduler/job caller."
+   }
+  ],
+  "kept": [
+   "CSAT report",
+   "SLA report"
+  ]
+ },
+ {
+  "area": "Voice calling",
+  "rows": [
+   {
+    "capability": "Voice: Twilio channel setup & provisioning",
+    "entry_points": [
+     "enterprise/app/models/enterprise/channel/twilio_sms.rb",
+     "enterprise/app/services/twilio/voice_webhook_setup_service.rb",
+     "enterprise/app/services/twilio/voice_teardown_service.rb",
+     "enterprise/app/controllers/enterprise/api/v1/accounts/inboxes_controller.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "other-channels",
+     "controllers-jobs-listeners"
+    ],
+    "note": "voice_enabled toggle on Channel::TwilioSms provisions/tears down the TwiML app; inboxes_controller adds the 'voice' channel type and calling toggles."
+   },
+   {
+    "capability": "Voice: Twilio call webhooks & call legs",
+    "entry_points": [
+     "enterprise/app/controllers/twilio/voice_controller.rb",
+     "enterprise/app/services/voice/inbound_call_builder.rb",
+     "enterprise/app/services/voice/outbound_call_builder.rb",
+     "enterprise/app/services/voice/provider/twilio/adapter.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "other-channels"
+    ],
+    "note": "TwiML call/status webhooks resolve inbound/outbound/agent legs; returns empty TwiML when inbound calls are disabled on the inbox."
+   },
+   {
+    "capability": "Voice: conference management",
+    "entry_points": [
+     "enterprise/app/services/voice/conference/manager.rb",
+     "enterprise/app/services/voice/provider/twilio/conference_service.rb",
+     "enterprise/app/controllers/api/v1/accounts/conference_controller.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "models-services"
+    ],
+    "note": "Join/leave/end Twilio conferences per call; case-store evidence of orphaned-conference hold-music failure modes lives here."
+   },
+   {
+    "capability": "Voice: call lifecycle & status (shared Call model)",
+    "entry_points": [
+     "enterprise/app/models/call.rb",
+     "enterprise/app/services/voice/call_status/manager.rb",
+     "enterprise/app/services/voice/status_update_service.rb",
+     "enterprise/app/services/voice/call_message_builder.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "models-services"
+    ],
+    "note": "Unified Twilio+WhatsApp Call record with status transitions and the voice_call message bubble builder."
+   },
+   {
+    "capability": "Voice: WhatsApp calling (Meta Calling API)",
+    "entry_points": [
+     "enterprise/app/controllers/api/v1/accounts/whatsapp_calls_controller.rb",
+     "enterprise/app/services/whatsapp/incoming_call_service.rb",
+     "enterprise/app/services/whatsapp/call_service.rb",
+     "enterprise/app/services/enterprise/whatsapp/providers/whatsapp_cloud_service.rb",
+     "enterprise/app/jobs/enterprise/webhooks/whatsapp_events_job.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "models-services"
+    ],
+    "note": "initiate/accept/reject/terminate against Graph API calling endpoints; field=calls webhooks routed under a per-call_id Redis mutex; docs/WHATSAPP_CALL_ARCHITECTURE.md is authoritative for the media plane."
+   },
+   {
+    "capability": "Voice: WhatsApp call permissions",
+    "entry_points": [
+     "enterprise/app/services/whatsapp/call_permission_request_service.rb",
+     "enterprise/app/services/whatsapp/call_permission_reply_service.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "models-services"
+    ],
+    "note": "Meta requires user-granted permission before business-initiated calls; request/interactive-reply flow intercepted from the WhatsApp events job."
+   },
+   {
+    "capability": "Voice: recording & transcription",
+    "entry_points": [
+     "enterprise/app/services/voice/recording_status_service.rb",
+     "enterprise/app/services/voice/call_transcription_service.rb",
+     "enterprise/app/jobs/voice/call_transcription_job.rb",
+     "enterprise/app/services/voice/provider/twilio/recording_attachment_service.rb",
+     "enterprise/app/jobs/voice/provider/twilio/recording_attachment_job.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "models-services"
+    ],
+    "note": "Recording-status webhook handling, recording attachment onto the call message, and the async transcription pipeline."
+   },
+   {
+    "capability": "Voice: call history & visibility",
+    "entry_points": [
+     "enterprise/app/finders/call_finder.rb",
+     "enterprise/app/controllers/api/v1/accounts/calls_controller.rb",
+     "enterprise/app/controllers/api/v1/accounts/contacts/calls_controller.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners"
+    ],
+    "note": "Account-wide call list only for admins/report_manage custom roles; others see calls they handled within permitted conversations."
+   },
+   {
+    "capability": "Voice: agent call session (browser SDK & tokens)",
+    "entry_points": [
+     "app/javascript/dashboard/composables/useCallSession.js",
+     "app/javascript/dashboard/composables/useWhatsappCallSession.js",
+     "enterprise/app/services/voice/provider/twilio/token_service.rb"
+    ],
+    "flags": [
+     "channel_voice"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners"
+    ],
+    "note": "Shared frontend session state (global join lock, duration timer) over Twilio Voice SDK and WhatsApp WebRTC; token_service mints the short-lived Voice Grant JWTs."
+   }
+  ],
+  "kept": []
+ },
+ {
+  "area": "Website live chat & widget",
+  "rows": [
+   {
+    "capability": "Website live chat: visitor session & auth token",
+    "entry_points": [
+     "app/controllers/api/v1/widget/configs_controller.rb",
+     "app/controllers/concerns/website_token_helper.rb",
+     "app/services/widget/token_service.rb",
+     "app/helpers/widget_helper.rb",
+     "app/models/channel/web_widget.rb"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-backend",
+     "identity-validation"
+    ],
+    "note": "Bootstrap config call creates contact/contact_inbox and mints the per-visitor JWT (X-Auth-Token); expired/garbage tokens silently behave like a brand-new anonymous visitor."
+   },
+   {
+    "capability": "Website live chat: conversations & messaging",
+    "entry_points": [
+     "app/controllers/api/v1/widget/conversations_controller.rb",
+     "app/controllers/api/v1/widget/messages_controller.rb",
+     "app/controllers/api/v1/widget/base_controller.rb"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-backend"
+    ],
+    "note": "Conversation create/resolve/typing/read/transcript plus message CRUD; conversation scope widens to all hmac_verified contact_inboxes when the session is verified."
+   },
+   {
+    "capability": "Website live chat: SDK embed & public JS API",
+    "entry_points": [
+     "app/javascript/entrypoints/sdk.js",
+     "app/javascript/sdk/IFrameHelper.js",
+     "app/javascript/sdk/cookieHelpers.js",
+     "app/javascript/sdk/settingsHelper.js"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-sdk"
+    ],
+    "note": "window.$chatwoot API (setUser/setCustomAttributes/toggle/reset) and the string-matched postMessage bridge; every platform install guide reduces to chatwootSDK.run({websiteToken, baseUrl})."
+   },
+   {
+    "capability": "Website live chat: widget app (in-iframe UI)",
+    "entry_points": [
+     "app/javascript/entrypoints/widget.js",
+     "app/javascript/widget/App.vue",
+     "app/javascript/widget/store",
+     "app/javascript/widget/api",
+     "app/javascript/widget/helpers/actionCable.js"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-sdk",
+     "widget-backend"
+    ],
+    "note": "The Vue 3 app inside the iframe: chat UI, Vuex store, /api/v1/widget/* REST clients, and the ActionCable subscriber mirroring agent-side message/typing/presence events."
+   },
+   {
+    "capability": "Website live chat: continuity via email",
+    "entry_points": [
+     "app/services/messages/send_email_notification_service.rb",
+     "app/controllers/api/v1/widget/messages_controller.rb",
+     "app/models/channel/web_widget.rb"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-backend"
+    ],
+    "note": "Gated by the per-inbox continuity_via_email toggle (not a features.yml flag — email_continuity_on_api_channel gates only the API-channel sibling); input_email content_type in messages#update captures the visitor's address."
+   },
+   {
+    "capability": "Website live chat: dark mode & appearance",
+    "entry_points": [
+     "app/javascript/widget/composables/useDarkMode.js",
+     "app/javascript/sdk/settingsHelper.js"
+    ],
+    "flags": [
+     "channel_website"
+    ],
+    "tier": null,
+    "pages": [
+     "widget-sdk"
+    ],
+    "note": "darkMode light/auto/dark threaded from chatwootSettings through config-set postMessage to the appConfig store; runtime switch via $chatwoot.setColorScheme()."
+   },
+   {
+    "capability": "Website live chat: campaigns on widget",
+    "entry_points": [
+     "app/controllers/api/v1/widget/campaigns_controller.rb",
+     "app/javascript/widget/helpers/campaignHelper.js",
+     "app/javascript/widget/store/modules/campaign.js"
+    ],
+    "flags": [
+     "campaigns"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "widget-backend",
+     "widget-sdk"
+    ],
+    "note": "Client-side delivery of ongoing campaigns (URL match + delay timer, cookie-based snooze); authoring/triggering lives in the Campaigns rows."
+   }
+  ],
+  "kept": [
+   "Pre-chat forms",
+   "Identity validation (HMAC)",
+   "Live-chat (ongoing) campaigns"
+  ]
+ },
+ {
+  "area": "Email channel",
+  "rows": [
+   {
+    "capability": "Email: channel setup (forwarding & IMAP/SMTP config)",
+    "entry_points": [
+     "app/models/channel/email.rb"
+    ],
+    "flags": [
+     "channel_email"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "email"
+    ],
+    "note": "Two setup modes: forward-to the auto-generated forward_to_email (ActionMailbox path) vs direct IMAP/SMTP with manual or OAuth credentials."
+   },
+   {
+    "capability": "Email: inbound ingress (ActionMailbox)",
+    "entry_points": [
+     "app/mailboxes/application_mailbox.rb",
+     "app/mailboxes/reply_mailbox.rb",
+     "app/finders/email_channel_finder.rb",
+     "app/mailboxes/mailbox_helper.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "email"
+    ],
+    "note": "Forwarded/relay mail path; BCC routing is gated by the SKIP_INCOMING_BCC_PROCESSING global config, not a feature flag."
+   },
+   {
+    "capability": "Email: conversation matching & threading",
+    "entry_points": [
+     "app/services/mailbox/conversation_finder.rb",
+     "app/services/mailbox/conversation_finder_strategies",
+     "app/presenters/mail_presenter.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "email"
+    ],
+    "note": "Strategy chain (reply+uuid / In-Reply-To / References / new-conversation) shared by both the ActionMailbox and IMAP paths."
+   },
+   {
+    "capability": "Email: IMAP polling (BYO mailbox)",
+    "entry_points": [
+     "app/jobs/inboxes/fetch_imap_emails_job.rb",
+     "app/services/imap/base_fetch_email_service.rb",
+     "app/services/imap/google_fetch_email_service.rb",
+     "app/services/imap/microsoft_fetch_email_service.rb",
+     "app/mailboxes/imap/imap_mailbox.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "email"
+    ],
+    "note": "Scheduled poller bypassing ActionMailbox entirely; Imap::ImapMailbox is a plain Ruby class, not an ActionMailbox mailbox."
+   },
+   {
+    "capability": "Email: mailbox OAuth (Google/Microsoft)",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/google/authorizations_controller.rb",
+     "app/controllers/api/v1/accounts/microsoft/authorizations_controller.rb",
+     "app/controllers/google/callbacks_controller.rb",
+     "app/controllers/microsoft/callbacks_controller.rb",
+     "app/services/google/refresh_oauth_token_service.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "email"
+    ],
+    "note": "OAuth connect + callback builds/finds the Channel::Email with XOAUTH2 IMAP config; Microsoft::RefreshOauthTokenService mirrors the Google refresh service."
+   },
+   {
+    "capability": "Email: outbound reply delivery (SMTP/OAuth send)",
+    "entry_points": [
+     "app/services/email/send_on_email_service.rb",
+     "app/mailers/conversation_reply_mailer.rb",
+     "app/builders/email/from_builder.rb",
+     "app/builders/email/reply_to_builder.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "email",
+     "notifications"
+    ],
+    "note": "Builds threading headers (Message-Id/In-Reply-To/References) that the inbound matching strategies parse on the way back in."
+   },
+   {
+    "capability": "Email: conversation continuity (widget/API → email)",
+    "entry_points": [
+     "app/services/messages/send_email_notification_service.rb",
+     "app/jobs/conversation_reply_email_job.rb",
+     "app/builders/email/reply_to_builder.rb"
+    ],
+    "flags": [
+     "inbound_emails",
+     "email_continuity_on_api_channel",
+     "custom_reply_email",
+     "custom_reply_domain"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "email"
+    ],
+    "note": "reply+<uuid>@inbound_email_domain addressing round-trips via ReceiverUuidStrategy; API-channel continuity has its own flag, widget uses channel.continuity_via_email."
+   },
+   {
+    "capability": "Email: templates & branding",
+    "entry_points": [
+     "app/services/email_templates/db_resolver_service.rb",
+     "app/models/email_template.rb",
+     "app/controllers/api/v1/accounts/branded_email_layouts_controller.rb",
+     "app/models/concerns/inbox_branded_email_layoutable.rb"
+    ],
+    "flags": [
+     "branded_email_templates"
+    ],
+    "tier": null,
+    "pages": [
+     "email",
+     "notifications"
+    ],
+    "note": "DB-backed Liquid templates/layouts win over filesystem views, resolved inbox → account → installation scope order."
+   }
+  ],
+  "kept": []
+ },
+ {
+  "area": "Captain AI",
+  "rows": [
+   {
+    "capability": "Captain: assistants (bot reply pipeline)",
+    "entry_points": [
+     "enterprise/app/models/captain/assistant.rb",
+     "enterprise/app/services/captain/conversation/response_scheduler_service.rb",
+     "enterprise/app/jobs/captain/conversation/response_builder_job.rb",
+     "enterprise/app/services/captain/assistant/agent_runner_service.rb",
+     "enterprise/app/controllers/api/v1/accounts/captain/assistants_controller.rb"
+    ],
+    "flags": [
+     "captain_integration",
+     "captain_integration_v2"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "captain-ai",
+     "models-services",
+     "controllers-jobs-listeners"
+    ],
+    "note": "ResponseBuilderJob branches v1 (chat + action classifier) vs v2 (tool-using agent runner); captain_integration_v2 is eligibility-gated, not in any plan array."
+   },
+   {
+    "capability": "Captain: reply control & auto-resolution",
+    "entry_points": [
+     "enterprise/app/jobs/captain/inbox_pending_conversations_resolution_job.rb",
+     "enterprise/lib/captain/conversation_completion_service.rb",
+     "enterprise/app/models/captain/assistant.rb",
+     "enterprise/app/models/conversation_outcome.rb"
+    ],
+    "flags": [
+     "captain_integration",
+     "captain_tasks"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "controllers-jobs-listeners",
+     "models-services"
+    ],
+    "note": "Guardrails/auto_resolve_mode/inactivity threshold live on Captain::Assistant; LLM-evaluated completion needs captain_tasks + assistant config, else pure time-based."
+   },
+   {
+    "capability": "Captain: documents & knowledge sync",
+    "entry_points": [
+     "enterprise/app/models/captain/document.rb",
+     "enterprise/app/services/captain/documents/sync_service.rb",
+     "enterprise/app/jobs/captain/documents/perform_sync_job.rb",
+     "enterprise/app/jobs/captain/documents/crawl_job.rb",
+     "enterprise/app/controllers/api/v1/accounts/captain/documents_controller.rb"
+    ],
+    "flags": [
+     "captain_integration",
+     "captain_document_auto_sync"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "models-services",
+     "controllers-jobs-listeners"
+    ],
+    "note": "PerformSyncJob layers permanent-discard/transient-retry/catch-all policies under a per-document Redis lock; Firecrawl webhook feeds the crawl pipeline."
+   },
+   {
+    "capability": "Captain: FAQ learning & suggestions",
+    "entry_points": [
+     "enterprise/app/models/captain/faq_suggestion.rb",
+     "enterprise/app/services/captain/llm/conversation_faq_service.rb",
+     "enterprise/app/jobs/captain/llm/conversation_faq_job.rb",
+     "enterprise/app/services/captain/faq_suggestion_approval_service.rb",
+     "enterprise/app/controllers/api/v1/accounts/captain/faq_suggestions_controller.rb"
+    ],
+    "flags": [
+     "captain_integration"
+    ],
+    "tier": "Startups+",
+    "pages": [
+     "captain-ai",
+     "controllers-jobs-listeners"
+    ],
+    "note": "CaptainListener enqueues ConversationFaqJob on conversation_resolved when the assistant's feature_faq config is on; suggestions are permission-scoped via FaqSuggestionFinder."
+   },
+   {
+    "capability": "Captain: custom tools",
+    "entry_points": [
+     "enterprise/app/models/captain/custom_tool.rb",
+     "enterprise/app/models/concerns/toolable.rb",
+     "enterprise/app/services/captain/tools/custom_http_tool.rb",
+     "enterprise/app/controllers/api/v1/accounts/captain/custom_tools_controller.rb"
+    ],
+    "flags": [
+     "custom_tools",
+     "captain_integration_v2"
+    ],
+    "tier": "Business+",
+    "pages": [
+     "models-services",
+     "controllers-jobs-listeners"
+    ],
+    "note": "Controller allows either flag; user-defined HTTP tools with Liquid templating, SSRF-guarded endpoints (SafeEndpointValidatable), 15-per-account cap."
+   },
+   {
+    "capability": "Captain: agent task assists (summarize/reply/rewrite/label)",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/captain/tasks_controller.rb",
+     "lib/captain/base_task_service.rb",
+     "lib/captain/summary_service.rb",
+     "lib/captain/reply_suggestion_service.rb",
+     "lib/captain/rewrite_service.rb"
+    ],
+    "flags": [
+     "captain_tasks"
+    ],
+    "tier": null,
+    "pages": [
+     "captain-ai"
+    ],
+    "note": "OSS lib/captain task services behind the tasks controller (also label_suggestion/follow_up/overview_summary/csat_utility_analysis); captain_tasks ships enabled by default."
+   },
+   {
+    "capability": "Captain: AI credits & usage limits",
+    "entry_points": [
+     "enterprise/app/models/enterprise/account/plan_usage_and_limits.rb",
+     "enterprise/app/services/enterprise/billing/handle_stripe_event_service.rb",
+     "enterprise/app/services/enterprise/billing/topup_checkout_service.rb",
+     "enterprise/app/services/enterprise/billing/topup_fulfillment_service.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "models-services",
+     "captain-ai"
+    ],
+    "note": "Per-plan CAPTAIN_CLOUD_PLAN_LIMITS (not a feature-flag array); usage_limits gates document/response creation; credit delta math has a known stuck-at-0 bug history."
+   },
+   {
+    "capability": "Captain: model routing & preferences",
+    "entry_points": [
+     "config/llm.yml",
+     "lib/llm/feature_router.rb",
+     "lib/llm/models.rb",
+     "app/models/concerns/captain_featurable.rb",
+     "app/controllers/api/v1/accounts/captain/preferences_controller.rb"
+    ],
+    "flags": [
+     "captain_integration_v2"
+    ],
+    "tier": null,
+    "pages": [
+     "captain-ai",
+     "controllers-jobs-listeners"
+    ],
+    "note": "Precedence: account captain_models override > hardcoded gpt-5.2 for v2-flagged assistant feature > llm.yml default; credit_multiplier per model is advertised here, not debited."
+   }
+  ],
+  "kept": [
+   "Copilot (agent sidebar)",
+   "Memories (contact facts)"
+  ]
+ },
+ {
+  "area": "Conversations & Contacts core",
+  "rows": [
+   {
+    "capability": "Conversations: unread counts",
+    "entry_points": [
+     "app/services/conversations/unread_counts.rb",
+     "app/services/conversations/unread_counts/listener.rb",
+     "app/services/conversations/unread_counts/builder.rb",
+     "app/services/conversations/unread_counts/store.rb"
+    ],
+    "flags": [
+     "conversation_unread_counts",
+     "unread_count_for_filters"
+    ],
+    "tier": null,
+    "pages": [
+     "conversations-services"
+    ],
+    "note": "Redis-backed, event-driven count cache (18-file subsystem); unread_count_for_filters gates only the saved-filter count variant."
+   },
+   {
+    "capability": "Conversations: messaging window",
+    "entry_points": [
+     "app/services/conversations/message_window_service.rb",
+     "app/models/conversation.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "conversations-services"
+    ],
+    "note": "Per-channel can_reply? rule (WhatsApp/Twilio 24h, TikTok 48h, Messenger/Instagram 24h-or-7d, API custom window); Conversation#can_reply? delegates here."
+   },
+   {
+    "capability": "Conversations: typing indicators",
+    "entry_points": [
+     "app/services/conversations/typing_status_manager.rb",
+     "app/controllers/api/v1/accounts/conversations_controller.rb",
+     "app/controllers/api/v1/widget/conversations_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "conversations-services"
+    ],
+    "note": "Dispatcher-only websocket broadcast (no DB writes), toggled from both agent dashboard and widget/public API controllers."
+   },
+   {
+    "capability": "Conversations: email transcripts",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/conversations_controller.rb",
+     "app/mailers/conversation_reply_mailer.rb",
+     "enterprise/app/models/enterprise/account/plan_usage_and_limits.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "conversations-services"
+    ],
+    "note": "Not a features.yml flag: Cloud gates via the Enterprise email_transcript_enabled? override (paid plans only, plan_name vs default plan), OSS always allows."
+   },
+   {
+    "capability": "Conversations: bulk actions",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/bulk_actions_controller.rb",
+     "app/jobs/bulk_actions_job.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "contacts-services"
+    ],
+    "note": "Shared BulkActionsController dispatches by type; the conversation path runs top-level BulkActionsJob, kept separate from the contacts bulk subsystem."
+   },
+   {
+    "capability": "Contacts: bulk actions",
+    "entry_points": [
+     "app/services/contacts/bulk_action_service.rb",
+     "app/jobs/contacts/bulk_action_job.rb",
+     "app/controllers/api/v1/accounts/bulk_actions_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "contacts-services"
+    ],
+    "note": "Contacts-list multi-select toolbar: BulkActionService fans out to bulk delete / label add / label remove services with non-uniform return contracts."
+   },
+   {
+    "capability": "Contacts: merge",
+    "entry_points": [
+     "app/actions/contact_merge_action.rb",
+     "app/controllers/api/v1/accounts/actions/contact_merges_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "contacts-services",
+     "conversations-services"
+    ],
+    "note": "Agent-initiated dashboard merge; reassigns conversations/messages/notes/contact_inboxes via bulk .update (skips callbacks) then destroys the mergee."
+   },
+   {
+    "capability": "Contacts: identity & dedupe (widget identify)",
+    "entry_points": [
+     "app/actions/contact_identify_action.rb",
+     "app/actions/contact_merge_action.rb",
+     "app/controllers/api/v1/widget/contacts_controller.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "conversations-services"
+    ],
+    "note": "Widget setUser/identify flow: auto-merges duplicate contacts by identifier > email > phone priority before applying attribute updates."
+   }
+  ],
+  "kept": [
+   "Conversation assignment (agent/team)",
+   "Statuses, resolve & snooze",
+   "Priority",
+   "Labels",
+   "Private notes & @mentions",
+   "Canned responses",
+   "Conversation filters & custom views",
+   "Contact management",
+   "Segments (saved contact filters)",
+   "Contact notes",
+   "Custom attributes (contact & conversation)",
+   "Companies",
+   "Data import (contact CSV import)"
+  ]
+ },
+ {
+  "area": "Integrations & platform",
+  "rows": [
+   {
+    "capability": "Shopify",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/integrations/shopify_controller.rb",
+     "app/controllers/shopify/callbacks_controller.rb",
+     "app/controllers/webhooks/shopify_controller.rb"
+    ],
+    "flags": [
+     "shopify_integration"
+    ],
+    "tier": null,
+    "pages": [
+     "webhook-routing",
+     "integrations"
+    ],
+    "note": "Per-store OAuth connect plus customer-order lookup in the conversation sidebar; the webhooks controller only handles Shopify's shop/redact GDPR topic (destroys the Integrations::Hook), and availability also requires SHOPIFY_CLIENT_ID global config."
+   },
+   {
+    "capability": "CRM sync (LeadSquared)",
+    "entry_points": [
+     "app/services/crm/leadsquared/processor_service.rb",
+     "app/services/crm/leadsquared/setup_service.rb",
+     "app/services/crm/base_processor_service.rb",
+     "app/jobs/crm/setup_job.rb",
+     "app/jobs/hook_job.rb"
+    ],
+    "flags": [
+     "crm_integration"
+    ],
+    "tier": null,
+    "pages": [
+     "integrations"
+    ],
+    "note": "Pushes contacts as LeadSquared leads and posts conversation-created/transcript activities; HookJob wraps calls in a per-hook Redis mutex to prevent duplicate-lead races, and Crm::SetupJob provisions activity types on hook creation."
+   },
+   {
+    "capability": "Notion",
+    "entry_points": [
+     "app/controllers/api/v1/accounts/notion/authorizations_controller.rb",
+     "app/controllers/notion/callbacks_controller.rb",
+     "app/controllers/api/v1/accounts/integrations/notion_controller.rb"
+    ],
+    "flags": [
+     "notion_integration"
+    ],
+    "tier": null,
+    "pages": [
+     "integrations"
+    ],
+    "note": "OAuth connect/disconnect storing an Integrations::Hook (app_id 'notion', requires NOTION_CLIENT_ID); no HookJob processor or lib/enterprise consumer exists yet, so the hook is consumed from the frontend only."
+   }
+  ],
+  "kept": [
+   "Slack",
+   "Dialogflow",
+   "Linear",
+   "Dashboard apps",
+   "Webhooks (account)",
+   "Google Translate",
+   "Video calls (Dyte)",
+   "Agent bots",
+   "White-label / disable branding",
+   "Data import (contact CSV import)"
+  ]
+ },
+ {
+  "area": "Automation & routing",
+  "rows": [
+   {
+    "capability": "Automation rules: rule engine (events, conditions, actions)",
+    "entry_points": [
+     "app/models/automation_rule.rb",
+     "app/listeners/automation_rule_listener.rb",
+     "app/services/automation_rules/conditions_filter_service.rb",
+     "app/services/automation_rules/action_service.rb",
+     "app/controllers/api/v1/accounts/automation_rules_controller.rb"
+    ],
+    "flags": [
+     "automations"
+    ],
+    "tier": null,
+    "pages": [
+     "automation-rules"
+    ],
+    "note": "Event-triggered immediate rules; shares the base ActionService action vocabulary with macros, and Enterprise adds the add_sla action via Enterprise::ActionService."
+   },
+   {
+    "capability": "Automation rules: delayed execution (episodes & sweep)",
+    "entry_points": [
+     "app/models/automation_rule_pending_execution.rb",
+     "app/jobs/automation_rules/trigger_pending_executions_job.rb",
+     "app/jobs/automation_rules/process_pending_execution_job.rb"
+    ],
+    "flags": [
+     "delayed_automations"
+    ],
+    "tier": null,
+    "pages": [
+     "automation-rules"
+    ],
+    "note": "Episode-keyed pending-execution queue with fire-time re-checks; read AutomationRulePendingExecution directly before touching episode-key mechanics."
+   },
+   {
+    "capability": "Automation rules: condition validation & auto-disable",
+    "entry_points": [
+     "app/services/automation_rules/condition_validation_service.rb",
+     "app/models/concerns/reauthorizable.rb"
+    ],
+    "flags": [
+     "automations"
+    ],
+    "tier": null,
+    "pages": [
+     "automation-rules"
+    ],
+    "note": "Conditions are re-validated at match time; two consecutive failures auto-disable the rule and email account admins via Reauthorizable."
+   },
+   {
+    "capability": "Auto-assignment: legacy per-conversation (V1)",
+    "entry_points": [
+     "app/services/auto_assignment/agent_assignment_service.rb",
+     "app/models/concerns/auto_assignment_handler.rb",
+     "app/models/concerns/inbox_agent_availability.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "assignment"
+    ],
+    "note": "Synchronous single-conversation assignment inside the Conversation save callback; default path when assignment_v2 is off, toggled per-inbox via enable_auto_assignment."
+   },
+   {
+    "capability": "Auto-assignment: policy-driven bulk (V2)",
+    "entry_points": [
+     "app/services/auto_assignment/assignment_service.rb",
+     "app/models/assignment_policy.rb",
+     "app/services/auto_assignment/rate_limiter.rb",
+     "app/jobs/auto_assignment/assignment_job.rb",
+     "app/jobs/auto_assignment/periodic_assignment_job.rb"
+    ],
+    "flags": [
+     "assignment_v2"
+    ],
+    "tier": null,
+    "pages": [
+     "assignment"
+    ],
+    "note": "SKIP LOCKED bulk claim driven by AssignmentPolicy; Enterprise overlay (enterprise/app/services/enterprise/auto_assignment/) adds balanced selection and capacity filtering under advanced_assignment (see Agent capacity limits row)."
+   },
+   {
+    "capability": "Auto-assignment: round-robin rotation queue",
+    "entry_points": [
+     "app/services/auto_assignment/inbox_round_robin_service.rb",
+     "app/services/auto_assignment/round_robin_selector.rb",
+     "app/models/inbox_member.rb"
+    ],
+    "flags": [],
+    "tier": null,
+    "pages": [
+     "assignment"
+    ],
+    "note": "Redis-backed per-inbox rotation shared by both V1 and V2; self-heals membership from inbox_members but resets order on Redis flush."
+   }
+  ],
+  "kept": [
+   "Macros",
+   "Agent capacity limits",
+   "SLA",
+   "Business hours",
+   "Auto-responder (greeting / out-of-office)"
+  ]
+ }
+]
