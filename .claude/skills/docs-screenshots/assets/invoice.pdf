@@ -1,0 +1,45 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 814 >>
+stream
+BT
+/F1 24 Tf 1 0 0 1 60 780 Tm (PaperLayer) Tj
+/F1 14 Tf 1 0 0 1 60 742 Tm (Invoice INV-2026-0917) Tj
+/F1 11 Tf 1 0 0 1 60 714 Tm (Date: 17 Sep 2026) Tj
+/F1 11 Tf 1 0 0 1 60 689 Tm (Bill to: Northwind Traders, 42 Harbor St, Boston MA) Tj
+/F1 11 Tf 1 0 0 1 60 664 Tm () Tj
+/F1 11 Tf 1 0 0 1 60 639 Tm (A4 Copier Paper, 80gsm (box of 5 reams)      x40     $1,160.00) Tj
+/F1 11 Tf 1 0 0 1 60 614 Tm (Recycled Kraft Envelopes C4 (pack of 250)    x12       $420.00) Tj
+/F1 11 Tf 1 0 0 1 60 589 Tm (Premium Cardstock 250gsm                     x10       $310.00) Tj
+/F1 11 Tf 1 0 0 1 60 564 Tm () Tj
+/F1 13 Tf 1 0 0 1 60 539 Tm (Total                                                  $1,890.00) Tj
+/F1 11 Tf 1 0 0 1 60 512 Tm () Tj
+/F1 11 Tf 1 0 0 1 60 487 Tm (Payment terms: Net 30. Thank you for your business.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000001105 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1175
+%%EOF

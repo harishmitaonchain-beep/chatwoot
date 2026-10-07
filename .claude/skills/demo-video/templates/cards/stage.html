@@ -1,0 +1,14 @@
+<!doctype html>
+<!-- Background behind product footage: white page with the accent's mosaic edges. Rendered as a still. -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="base.js"></script>
+<body>
+<canvas id="mosaic"></canvas>
+<script>
+  document.body.dataset.accent = PARAMS.accent || 'blue';
+  drawMosaic(document.getElementById('mosaic'), { density: 0.9, seed: PARAMS.seed || 11 });
+  window.DURATION = 0;
+  window.renderAt = () => {};
+</script>
+</body>

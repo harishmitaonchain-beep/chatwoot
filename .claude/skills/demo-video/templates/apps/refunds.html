@@ -1,0 +1,75 @@
+<!doctype html>
+<!-- Paper Layer's internal refund tool, embedded in Chatwoot as a Dashboard App (served on :3099 while recording).
+     It uses the real dashboard-app contract: asks Chatwoot for context, then shows the open conversation's
+     customer and order (conversation custom attribute order_id). -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>Refunds</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 14px/1.45 -apple-system, BlinkMacSystemFont, 'Inter', sans-serif; color: #1c2024; background: #f7f8fa; }
+  header { display: flex; align-items: center; gap: 10px; padding: 14px 20px; background: #fff; border-bottom: 1px solid #e6e8eb; }
+  header .logo { width: 26px; height: 26px; border-radius: 7px; background: #3d63dd; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 13px; }
+  header h1 { margin: 0; font-size: 15px; font-weight: 600; }
+  header span { margin-left: auto; font-size: 12px; color: #687076; }
+  main { padding: 20px; display: grid; gap: 16px; max-width: 760px; }
+  .card { background: #fff; border: 1px solid #e6e8eb; border-radius: 10px; padding: 16px 18px; }
+  .row { display: flex; justify-content: space-between; align-items: center; }
+  .muted { color: #687076; font-size: 12.5px; }
+  .k { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #889096; margin-bottom: 6px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+  td { padding: 9px 0; border-top: 1px solid #f1f3f5; }
+  td:last-child { text-align: right; }
+  .pill { font-size: 11.5px; padding: 3px 8px; border-radius: 999px; background: #fff4e5; color: #ad5700; }
+  .pill.done { background: #e9f9ee; color: #18794e; }
+  label { display: flex; gap: 8px; align-items: center; padding: 4px 0; }
+  .amount { font-size: 22px; font-weight: 600; }
+  button { border: 0; border-radius: 8px; padding: 10px 16px; font: 600 13.5px/1 inherit; background: #3d63dd; color: #fff; cursor: pointer; }
+  button:disabled { background: #18794e; cursor: default; }
+</style>
+</head>
+<body>
+<header><div class="logo">PL</div><h1>Refunds</h1><span id="agent"></span></header>
+<main>
+  <div class="card">
+    <div class="k">Customer</div>
+    <div class="row"><div><strong id="name">Waiting for Chatwoot…</strong><div class="muted" id="email"></div></div><span class="pill" id="status">Open claim</span></div>
+  </div>
+  <div class="card">
+    <div class="row"><div><div class="k">Order</div><strong id="order">–</strong></div><span class="muted">Delivered Oct 4 · UPS Ground</span></div>
+    <table id="items"></table>
+  </div>
+  <div class="card">
+    <div class="k">Refund or replace</div>
+    <label><input type="radio" name="kind" checked> Express replacement, no charge</label>
+    <label><input type="radio" name="kind"> Refund to original payment</label>
+    <div class="row" style="margin-top:12px"><div><div class="muted">Credit value</div><div class="amount" id="total">$0.00</div></div><button id="go">Approve replacement</button></div>
+  </div>
+</main>
+<script>
+  const ORDERS = {
+    'PL-48213': [['Kraft gift box, large (case of 24)', 2, 86.0], ['Tissue paper, sage (500 sheets)', 1, 32.0]],
+  };
+  const money = n => `$${n.toFixed(2)}`;
+  function render({ contact = {}, conversation = {}, currentAgent = {} }) {
+    document.getElementById('name').textContent = contact.name || 'Unknown customer';
+    document.getElementById('email').textContent = [contact.email, contact.additional_attributes?.company_name].filter(Boolean).join(' · ');
+    document.getElementById('agent').textContent = currentAgent.name ? `Signed in as ${currentAgent.name}` : '';
+    const order = conversation.custom_attributes?.order_id || '–';
+    document.getElementById('order').textContent = order;
+    const items = ORDERS[order] || [];
+    document.getElementById('items').innerHTML = items.map(([n, q, p]) => `<tr><td>${n} × ${q}</td><td>${money(q * p)}</td></tr>`).join('');
+    document.getElementById('total').textContent = money(items.reduce((s, [, q, p]) => s + q * p, 0));
+  }
+  window.addEventListener('message', e => {
+    try { const m = JSON.parse(e.data); if (m.event === 'appContext') render(m.data); } catch { /* not ours */ }
+  });
+  window.parent.postMessage('chatwoot-dashboard-app:fetch-info', '*');
+  document.getElementById('go').addEventListener('click', e => {
+    e.target.disabled = true; e.target.textContent = 'Replacement approved';
+    const s = document.getElementById('status'); s.textContent = 'Resolved'; s.classList.add('done');
+  });
+</script>
+</body>
+</html>

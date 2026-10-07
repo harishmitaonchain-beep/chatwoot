@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- Section card: site-style badge, Haskoy headline, optional subline, accent mosaic.
+     Params: { accent, icon, badge, title, sub } -->
+<meta charset="utf-8">
+<link rel="stylesheet" href="base.css">
+<script src="base.js"></script>
+<style>
+  #content { position: absolute; left: 180px; right: 180px; top: 50%; transform: translateY(-50%); }
+  #badge { margin-bottom: 44px; }
+  #title { max-width: 1400px; }
+  #sub { margin-top: 30px; max-width: 1100px; }
+</style>
+<body>
+<canvas id="mosaic"></canvas>
+<div id="content">
+  <div id="badge" class="badge-wrap"><div class="badge"><span class="icon"></span><span class="text"></span></div><svg class="badge-tip" viewBox="0 0 26 64"><path d="M0 1.5H4L23.5 32 4 62.5H0" fill="#fff" stroke="#18181b" stroke-width="3" stroke-linejoin="miter"/></svg></div>
+  <h1 id="title" class="headline"></h1>
+  <p id="sub" class="sub"></p>
+</div>
+<script>
+  const P = PARAMS;
+  document.body.dataset.accent = P.accent || 'blue';
+  document.querySelector('#badge .icon').innerHTML = icon(P.icon);
+  document.querySelector('#badge .text').textContent = P.badge || '';
+  document.getElementById('title').textContent = P.title || '';
+  document.getElementById('sub').textContent = P.sub || '';
+  if (!P.sub) document.getElementById('sub').remove();
+  const mosaic = document.getElementById('mosaic');
+  drawMosaic(mosaic, { seed: P.seed || 5 });
+
+  window.DURATION = 2.6;
+  const rise = (el, p, px = 26) => { el.style.opacity = p; el.style.transform = `translateY(${(1 - p) * px}px)`; };
+  window.renderAt = t => {
+    rise(document.getElementById('badge'), k(t, 0.1, 0.55));
+    rise(document.getElementById('title'), k(t, 0.25, 0.6), 34);
+    const sub = document.getElementById('sub');
+    if (sub) rise(sub, k(t, 0.45, 0.6));
+  };
+</script>
+</body>

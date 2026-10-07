@@ -1,0 +1,44 @@
+/* chatwoot.com 2026 look: Haskoy headlines, Inter body, white page, pixel-mosaic edges, one accent per section.
+   Colors sampled from the live site (see reference/style.md). Layout is authored at 1920x1080; 4K renders at DPR 2. */
+@font-face { font-family: Haskoy; src: url(../../assets/fonts/Haskoy-variable.ttf); font-weight: 100 900; }
+@font-face { font-family: Inter; src: url(../../assets/fonts/InterDisplay-Regular.woff2); font-weight: 400; }
+@font-face { font-family: Inter; src: url(../../assets/fonts/InterDisplay-Medium.woff2); font-weight: 500; }
+@font-face { font-family: Inter; src: url(../../assets/fonts/InterDisplay-SemiBold.woff2); font-weight: 600; }
+
+:root {
+  --ink: #18181b;
+  --muted: #52525b;
+  --line: #e4e4e7;
+  --page: #ffffff;
+}
+[data-accent="blue"]   { --deep: #1875ee; --mid: #5e9ff3; --soft: #ccdcf8; --wash: #eef4fe; }
+[data-accent="purple"] { --deep: #7e5bdc; --mid: #9478e2; --soft: #cbb8ff; --wash: #f4f0ff; }
+[data-accent="green"]  { --deep: #12946a; --mid: #7ce3b1; --soft: #dcf4e8; --wash: #f0fbf6; }
+[data-accent="amber"]  { --deep: #c98a1b; --mid: #efcb8d; --soft: #ffe6a8; --wash: #fff8e6; }
+[data-accent="yellow"] { --deep: #1b1206; --mid: #f7c445; --soft: #ffe6a8; --wash: #fff6dc; }
+
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--page); }
+body { font-family: Inter, -apple-system, sans-serif; color: var(--ink); -webkit-font-smoothing: antialiased; }
+#mosaic { position: absolute; inset: 0; }
+
+/* Site badge: outlined tag with an arrow end and a hard offset shadow. */
+.badge-wrap { display: inline-flex; filter: drop-shadow(5px 5px 0 var(--ink)); }
+.badge {
+  display: inline-flex; align-items: center; gap: 14px; height: 64px; padding: 0 10px 0 12px;
+  background: #fff; border: 3px solid var(--ink); border-right: 0; font: 600 28px/1 Inter; color: var(--ink);
+}
+.badge-tip { display: block; width: 26px; height: 64px; }
+.badge .icon {
+  width: 40px; height: 40px; border-radius: 9px; background: var(--deep); display: grid; place-items: center;
+}
+.badge .icon svg { width: 24px; height: 24px; stroke: #fff; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.headline { font: 600 104px/1.02 Haskoy, Inter, sans-serif; letter-spacing: -0.035em; margin: 0; }
+.sub { font: 400 34px/1.45 Inter; color: var(--muted); margin: 0; }
+.label { font: 600 15px/1 Inter; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+.card {
+  background: #fff; border: 1px solid var(--line); border-radius: 22px;
+  box-shadow: 0 1px 2px rgba(24,24,27,.04), 0 18px 50px rgba(24,24,27,.10);
+}

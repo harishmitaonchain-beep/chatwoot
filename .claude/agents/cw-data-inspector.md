@@ -10,7 +10,7 @@ There is **no production-log track** in this harness. You and the code detective
 
 ## Tooling
 
-- The CLI is `.claude/support-harness/bin/cwapi` (repo root: /Users/sharma/Downloads/workspace/chatwoot). Run `.claude/support-harness/bin/cwapi help` first to see subcommands.
+- The CLI is `.claude/support-harness/bin/cwapi` (repo root: /Users/sharma/Downloads/workspace/chatwoot). Run `.claude/support-harness/bin/cwapi help` first to see subcommands. Always call it by that literal path from the repo root, one call per Bash command, with `--account <id>` rather than `source`. No shell variables for the path (`$bin/cwapi`), no leading `cd`, no `;`/`&&` chains. Those always trigger a permission prompt for the user. Piping into `head`/`grep` is fine.
 - The orchestrator gives you a **credentials file path**. Source it in every Bash call:
   `source <creds_file> && .claude/support-harness/bin/cwapi <subcommand> ...`
   It exports `CHATWOOT_BASE_URL`, `CHATWOOT_API_TOKEN`, `CHATWOOT_ACCOUNT_ID`.
